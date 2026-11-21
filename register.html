@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Shift - Officer Registration</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css?v=2">
+  </head>
+  <body>
+    <header class="top-navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-emblem">
+          <img class="emblem-icon" src="assets/logo.svg" alt="">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title"
+            >ANOMALY <span class="brand-highlight">SHIFT</span></span
+          >
+          <span class="brand-subtitle"
+            ><span class="rec-dot"></span>TERMINAL 01 // NIGHT INSPECTOR</span
+          >
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li id="nav-rankings"><a href="rankings.html">Rankings</a></li>
+          <li id="nav-login"><a href="login.html">Login</a></li>
+          <li id="nav-register">
+            <a href="register.html" class="active">Register</a>
+          </li>
+          <li id="nav-logout">
+            <button type="button" class="nav-logout-btn">Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div id="session-panel">
+        <p class="session-text">
+          CURRENT SESSION: <span id="session-username"></span>
+        </p>
+        <button type="button" class="btn btn-danger btn-logout">
+          LOGOUT OFFICER
+        </button>
+      </div>
+
+      <section id="register-already-logged-in" class="auth-box">
+        <div class="auth-header">
+          <h1>TERMINAL OCCUPIED</h1>
+          <p class="auth-sub">OFFICER SESSION ACTIVE</p>
+        </div>
+        <div class="auth-footer-center">
+          <p class="text-warning">
+            Officer <strong id="reg-logged-in-name"></strong> is currently
+            registered and logged in.
+          </p>
+          <p class="hero-subtitle">
+            You already have an active profile. Return to your shift or log out
+            to create a new profile.
+          </p>
+          <div class="hero-actions">
+            <a href="index.html" class="btn btn-primary">GO TO HOME</a>
+            <button type="button" class="btn btn-danger btn-logout">
+              LOGOUT OFFICER
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-box" id="register-auth-box">
+        <div class="auth-header">
+          <h1>OFFICER REGISTRATION</h1>
+          <p class="auth-sub">CREATE NEW INSPECTOR PROFILE</p>
+        </div>
+        <div class="form-group">
+          <label for="reg-username" class="form-label">USERNAME</label>
+          <input type="text" id="reg-username" class="form-control" placeholder="Choose officer username...">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password" class="form-label">PASSWORD</label>
+          <input type="password" id="reg-password" class="form-control" placeholder="Create secure password...">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-phone" class="form-label">PHONE NUMBER</label>
+          <input type="tel" id="reg-phone" class="form-control" placeholder="+971 50 123 4567">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-address" class="form-label">ADDRESS</label>
+          <input type="text" id="reg-address" class="form-control" placeholder="Dubai Knowledge Park">
+        </div>
+
+        <div id="reg-msg"></div>
+
+        <button type="button" id="btn-register" class="btn btn-secondary btn-full">
+          CREATE ACCOUNT
+        </button>
+
+        <div class="auth-footer-center">
+          <a href="login.html" class="auth-link-login">&larr; Already have an account? Login here</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        CST 2120 Web Applications and Databases &mdash; Coursework 1 &mdash;
+        Student ID: M01100121
+      </p>
+    </footer>
+    <script src="js/auth.js?v=3"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

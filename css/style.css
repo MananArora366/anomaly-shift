@@ -1,0 +1,684 @@
+/* Universal reset and body styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #0c1214;
+  background-image: url("../assets/surveillance_bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+/* Terminal text */
+body, button, input {
+  font-family: "Courier New", Courier, monospace;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Top navigation bar using CSS grid */
+.top-navbar {
+  background-color: #090e10;
+  border-bottom: 2px solid #293840;
+  padding: 12px 25px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+.brand-emblem {
+  width: 36px;
+  height: 36px;
+  background: #090e11;
+  border: 1.5px solid #22c55e;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.emblem-icon {
+  width: 20px;
+  height: 20px;
+  color: #22c55e;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+.brand-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+.brand-highlight {
+  color: #22c55e;
+}
+.brand-subtitle {
+  color: #eab308;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 0;
+  line-height: 1.1;
+}
+.rec-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  display: inline-block;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 6px 10px;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+  background-color: #1e293b;
+  border-radius: 4px;
+}
+.nav-links .btn-nav-primary {
+  background-color: #22c55e;
+  color: #052e16;
+  font-weight: bold;
+  border-radius: 4px;
+}
+#nav-logout {
+  display: none;
+}
+.nav-logout-btn {
+  background: transparent;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+.nav-logout-btn:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+/* Reusable button classes */
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn-primary {
+  background-color: #22c55e;
+  color: #052e16;
+}
+.btn-secondary {
+  background-color: #1e293b;
+  color: #ffffff;
+  border: 1px solid #334155;
+}
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+.btn-full {
+  width: 100%;
+}
+/* Common panel styling and home page layout */
+.hero-section,
+.feature-card,
+.auth-box,
+.data-table-container {
+  background-color: rgba(18, 26, 30, 0.85);
+  border: 1px solid #293840;
+  border-radius: 8px;
+}
+.hero-section {
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.hero-badge {
+  color: #eab308;
+  font-size: 13px;
+}
+.hero-title {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #ffffff;
+}
+.hero-subtitle {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+.hero-actions,
+.lockout-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+#hero-actions-auth {
+  display: none;
+}
+/* Feature cards in a 3-column CSS Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+.feature-card {
+  padding: 20px;
+}
+/* User session indicator and security lockout gate */
+#session-panel {
+  display: none;
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+  background-color: rgba(9, 14, 16, 0.95);
+  border: 1px solid #22c55e;
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+/* Terminal lockout for unauthenticated access */
+.terminal-lockout {
+  display: none;
+  background-color: rgba(9, 14, 16, 0.96);
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  padding: 40px 25px;
+  text-align: center;
+  max-width: 580px;
+  margin: 3rem auto;
+}
+.lockout-badge {
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.lockout-title {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+.lockout-msg {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+#already-logged-in-panel,
+#register-already-logged-in {
+  display: none;
+}
+/* Login and registration form styling */
+.auth-box {
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 25px;
+}
+.auth-header h1 {
+  font-size: 1.5em;
+}
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.auth-sub {
+  color: #94a3b8;
+  font-size: 14px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.form-label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #e2e8f0;
+}
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  background-color: #080c0e;
+  border: 1px solid #293840;
+  color: #ffffff;
+  border-radius: 4px;
+}
+.form-control:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+.remember-label {
+  font-size: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+}
+#login-msg,
+#reg-msg {
+  font-size: 12px;
+  margin-bottom: 12px;
+  min-height: 18px;
+}
+.auth-footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  font-size: 13px;
+}
+.auth-footer-center {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+.auth-link-register,
+.auth-link-guest,
+.auth-link-login {
+  color: #eab308;
+  text-decoration: none;
+}
+.auth-link-register {
+  color: #22c55e;
+}
+/* Game HUD and shift directive alert */
+.game-hud {
+  background-color: #090e10;
+  border: 1px solid #293840;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hud-value,
+.hud-shift {
+  color: #eab308;
+  font-weight: bold;
+}
+.hud-officer {
+  color: #22c55e;
+}
+.strikes-container {
+  display: flex;
+  gap: 5px;
+}
+.strike-box {
+  color: #22c55e;
+  font-weight: bold;
+}
+.shift-directive {
+  background-color: rgba(14, 20, 23, 0.95);
+  border: 1px solid #293840;
+  border-left: 4px solid #eab308;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.shift-directive-tag {
+  color: #eab308;
+  font-weight: bold;
+}
+/* Surveillance observation window */
+.observation-window {
+  background-color: #080c0e;
+  border: 1px solid #293840;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 220px;
+}
+
+/* Phaser surveillance viewport */
+.surveillance-viewport {
+  width: 620px;
+  max-width: 100%;
+  height: 180px;
+  background-color: #050809;
+  border: 1px solid #1e293b;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.surveillance-viewport canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Visitor SVG sprite sheet */
+.visitor-character {
+  text-align: center;
+}
+.visitor-sprite {
+  display: block;
+  width: 96px;
+  height: 117px;
+  margin: 0 auto 8px;
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  animation: present-badge 1.2s steps(2, end);
+}
+@keyframes present-badge { from { background-position: 0 0; } to { background-position: 100% 0; } }
+.speech-bubble {
+  background-color: #f4eedb;
+  color: #1a1a1a;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  max-width: 500px;
+  text-align: center;
+}
+.speech-bubble .text-warning,
+.speech-bubble .text-success,
+.speech-bubble .text-danger {
+  color: #991b1b;
+  font-weight: 600;
+}
+/* Guard inspection desk (3-column CSS Grid) */
+.guard-desk {
+  background-color: rgba(24, 34, 38, 0.95);
+  border: 1px solid #293840;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr 240px;
+  gap: 15px;
+}
+.guard-desk.shift-amber {
+  border-color: #eab308;
+}
+.guard-desk.shift-red {
+  border-color: #dc2626;
+}
+/* Visitor ID badge card */
+.desk-card {
+  background-color: #f4eedb;
+  color: #1a1a1a;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.card-badge-header {
+  font-weight: bold;
+  border-bottom: 2px solid #333333;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+.photo-placeholder {
+  width: 60px;
+  height: 70px;
+  background-color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #555555;
+}
+.card-field {
+  margin-bottom: 5px;
+}
+/* Desk telephone panel and keypad */
+.phone-panel {
+  background-color: #0f1618;
+  border: 1px solid #293840;
+  padding: 15px;
+  border-radius: 5px;
+}
+.phone-header {
+  color: #ffffff;
+  border-bottom: 1px solid #293840;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+.phone-screen {
+  background-color: #05080a;
+  color: #22c55e;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.phone-numpad {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.num-btn {
+  background-color: #1a252a;
+  border: 1px solid #293840;
+  color: #ffffff;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.num-btn:hover {
+  background-color: #293840;
+}
+.phone-directory {
+  font-size: 11px;
+  color: #cbd5e1;
+  font-weight: 500;
+  text-align: center;
+}
+/* Desk action buttons */
+.desk-actions {
+  background-color: #090e10;
+  border: 1px solid #293840;
+  border-top: none;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.status-indicator {
+  font-size: 14px;
+}
+.status-awaiting {
+  color: #eab308;
+}
+.actions-cluster {
+  display: flex;
+  gap: 12px;
+}
+/* Table styling for logbook and rankings */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+th,
+td {
+  border: 1px solid #293840;
+  padding: 10px;
+  text-align: left;
+}
+th {
+  background-color: #090e10;
+  color: #eab308;
+}
+/* Desk logbook table */
+#desk-logbook {
+  overflow-x: auto;
+}
+.logbook-table {
+  width: 100%;
+  min-width: 320px;
+  border-collapse: collapse;
+}
+.logbook-table th,
+.logbook-table td {
+  border-color: #b5ac8f;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #111827;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.logbook-table th {
+  background-color: #d8ceb0;
+  color: #030712;
+  font-weight: 800;
+}
+/* High scores rankings page */
+.rankings-title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+.rankings-subtitle {
+  color: #94a3b8;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.data-table-container {
+  padding: 15px;
+  overflow-x: auto;
+}
+.rank-badge,
+.score-gold {
+  color: #22c55e;
+  font-weight: bold;
+}
+.rankings-empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+}
+/* Feedback message colors */
+.text-success {
+  color: #22c55e;
+}
+.text-danger {
+  color: #dc2626;
+}
+.text-warning {
+  color: #eab308;
+}
+/* Footer and mobile responsive design */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #94a3b8;
+  border-top: 1px solid #293840;
+  margin-top: 30px;
+}
+/* Mobile and tablet layout adjustments */
+@media (max-width: 850px) {
+  .top-navbar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+  .brand-logo {
+    justify-content: center;
+  }
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .game-hud {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    font-size: 13px;
+    padding: 10px;
+  }
+  .hud-item {
+    padding: 2px 6px;
+  }
+  .feature-grid,
+  .guard-desk {
+    grid-template-columns: 1fr;
+  }
+  .desk-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .actions-cluster {
+    width: 100%;
+    flex-direction: column;
+  }
+  .actions-cluster .btn {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .game-hud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+  }
+  .hud-item {
+    justify-content: flex-start;
+  }
+  .top-navbar {
+    padding: 10px 14px;
+  }
+  .container {
+    padding: 10px;
+  }
+  .observation-window {
+    padding: 10px;
+    min-height: 180px;
+  }
+}
+button[hidden] { display: none; }

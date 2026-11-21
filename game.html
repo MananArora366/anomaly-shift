@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Shift - Game</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css?v=2">
+  </head>
+  <body>
+    <header class="top-navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-emblem">
+          <img class="emblem-icon" src="assets/logo.svg" alt="">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title"
+            >ANOMALY <span class="brand-highlight">SHIFT</span></span
+          >
+          <span class="brand-subtitle"
+            ><span class="rec-dot"></span>TERMINAL 01 // NIGHT INSPECTOR</span
+          >
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li id="nav-rankings"><a href="rankings.html">Rankings</a></li>
+          <li id="nav-login"><a href="login.html">Login</a></li>
+          <li id="nav-register"><a href="register.html">Register</a></li>
+          <li id="nav-logout">
+            <button type="button" class="nav-logout-btn">Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section id="terminal-lockout" class="terminal-lockout">
+        <div class="lockout-badge">SECURITY PROTOCOL // TERMINAL 01 LOCKED</div>
+        <h1 class="lockout-title">OFFICER AUTHENTICATION REQUIRED</h1>
+        <p class="lockout-msg">
+          Checkpoint Terminal 01 is currently restricted. An active security
+          officer session is required to inspect visitor credentials, verify
+          clearance codes, and operate facility gate controls.
+        </p>
+        <div class="lockout-actions">
+          <a href="login.html" class="btn btn-primary">LOGIN TO TERMINAL</a>
+          <a href="register.html" class="btn btn-secondary">REGISTER PROFILE</a>
+          <button type="button" id="lockout-guest-btn" class="btn btn-secondary btn-guest">
+            PLAY AS GUEST
+          </button>
+        </div>
+      </section>
+
+      <div id="game-workstation">
+        <header class="game-hud">
+          <div class="hud-item">
+            <span>SHIFT:</span>
+            <span class="hud-value" id="hud-shift"
+              >SHIFT 1 // 23:00 - 02:00</span
+            >
+          </div>
+          <div class="hud-item">
+            <span>OFFICER:</span>
+            <span class="hud-value" id="hud-officer">OFFICER</span>
+          </div>
+          <div class="hud-item">
+            <span>TIME:</span>
+            <span class="hud-value" id="hud-clock">23:00</span>
+          </div>
+          <div class="hud-item">
+            <span>VISITOR:</span>
+            <span class="hud-value" id="hud-visitor-count">1 / 4</span>
+          </div>
+          <div class="hud-item">
+            <span>STRIKES:</span>
+            <div class="strikes-container" id="hud-strikes">
+              <div class="strike-box">[ ]</div>
+              <div class="strike-box">[ ]</div>
+              <div class="strike-box">[ ]</div>
+            </div>
+          </div>
+          <div class="hud-item">
+            <span>SCORE:</span>
+            <span class="hud-value" id="hud-score">0 PTS</span>
+          </div>
+        </header>
+
+        <aside class="shift-directive" id="shift-directive">
+          <span class="shift-directive-tag">DIRECTIVE:</span>
+          <span id="shift-directive-text"
+            >Verify badge expiration date against logbook year (2026). If
+            expired, press [SPACE] Emergency Alarm. If valid, press [A]
+            Authorize Entry.</span
+          >
+        </aside>
+
+        <div class="observation-window">
+          <div class="visitor-character">
+            <div id="visitor-portrait" aria-hidden="true"></div>
+            <div class="speech-bubble" id="visitor-dialogue">
+              <p>
+                <strong>Elias Voss:</strong> &ldquo;Night maintenance crew. Here
+                to service the east ventilation unit.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guard-desk">
+          <div class="desk-card" id="desk-badge">
+            <div class="card-badge-header">D.L.A. EMPLOYEE CREDENTIAL</div>
+            <div class="photo-placeholder">PHOTO</div>
+            <div class="card-field">
+              <span class="card-field-label">NAME:</span>
+              <span id="badge-name">Elias Voss</span>
+            </div>
+            <div class="card-field">
+              <span class="card-field-label">ID#:</span>
+              <span id="badge-id">DLA-7719</span>
+            </div>
+            <div class="card-field">
+              <span class="card-field-label">DEPT:</span>
+              <span id="badge-dept">Maintenance</span>
+            </div>
+            <div class="card-field">
+              <span class="card-field-label">EXPIRY:</span>
+              <span id="badge-expiry">11/08/2027</span>
+            </div>
+            <p class="badge-hint">
+              * Inspect badge details against daily logbook
+            </p>
+          </div>
+
+          <div class="desk-card" id="desk-logbook">
+            <div class="card-badge-header">
+              DAILY REGISTRY LOGBOOK &mdash; 17 OCT 2026
+            </div>
+            <table class="logbook-table">
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>TIME</th>
+                  <th>CLEARANCE</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="logbook-tbody"></tbody>
+            </table>
+          </div>
+
+          <aside class="phone-panel">
+            <div class="card-badge-header phone-header">
+              BELL // 61 DESK PHONE
+            </div>
+            <div class="phone-screen" id="phone-display">READY_</div>
+            <div class="phone-numpad">
+              <button type="button" data-digit="1" class="num-btn">1</button>
+              <button type="button" data-digit="2" class="num-btn">2</button>
+              <button type="button" data-digit="3" class="num-btn">3</button>
+              <button type="button" data-digit="4" class="num-btn">4</button>
+              <button type="button" data-digit="5" class="num-btn">5</button>
+              <button type="button" data-digit="6" class="num-btn">6</button>
+              <button type="button" data-digit="7" class="num-btn">7</button>
+              <button type="button" data-digit="8" class="num-btn">8</button>
+              <button type="button" data-digit="9" class="num-btn">9</button>
+              <button type="button" data-action="clear" class="num-btn">
+                *
+              </button>
+              <button type="button" data-digit="0" class="num-btn">0</button>
+              <button type="button" data-action="clear" class="num-btn">
+                #
+              </button>
+            </div>
+            <div class="phone-directory">
+              <p>Security: 100 | Admin: 204 | Medical: 311</p>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="desk-actions">
+          <div class="status-indicator">
+            <span>GATE STATUS: </span>
+            <strong id="gate-status" class="status-awaiting"
+              >AWAITING CLEARANCE</strong
+            >
+          </div>
+          <div class="actions-cluster">
+            <button type="button" id="btn-alarm" class="btn btn-danger">
+              [SPACE] EMERGENCY ALARM
+            </button>
+            <button type="button" id="btn-auth" class="btn btn-primary">
+              [A] AUTHORIZE ENTRY
+            </button>
+            <button id="btn-restart" class="btn btn-secondary" type="button" hidden>Play again</button>
+          </div>
+        </footer>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>
+        CST 2120 Web Applications and Databases &mdash; Coursework 1 &mdash;
+        Student ID: M01100121
+      </p>
+    </footer>
+    <script src="js/auth.js?v=3"></script>
+    <script src="js/app.js"></script>
+    <script type="module" src="js/start.js"></script>
+  </body>
+</html>
